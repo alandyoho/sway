@@ -1,28 +1,120 @@
 import React, { Component } from "react"
-import { View, Image, Dimensions, StyleSheet, TextInput, TouchableWithoutFeedback, Keyboard } from "react-native"
-
+import { View, Image, Dimensions, StyleSheet, FlatList, Text, Animated, TextInput, TouchableWithoutFeedback, Keyboard, LayoutAnimation } from "react-native"
+import ListItem from "./ListItem"
+import data from "./data"
 export default class HomeStationView extends Component {
     constructor() {
         super()
         this.state = {
-            homeStation: ""
+            homeStation: "",
+            expanded: false,
+            homeStationView: {
+                flex: 1 / 2,
+                alignItems: "center",
+                backgroundColor: "#FFF"
+            },
+            homeImageView: {
+                flex: 1 / 2,
+                backgroundColor: "#FFF"
+            }
         }
     }
+    expandElement = () => {
+        LayoutAnimation.configureNext({
+            duration: 1000,
+            create: {
+                type: LayoutAnimation.Types.spring,
+                property: LayoutAnimation.Properties.scaleXY,
+                springDamping: 0.7,
+            },
+            update: {
+                type: LayoutAnimation.Types.spring,
+                springDamping: 0.7,
+            },
+        });
+        this.setState({
+            homeStationView: {
+                flex: 1,
+                alignItems: "center",
+                backgroundColor: "#FFF"
+            },
+            homeImageView: {
+                flex: 0
+            },
+            expanded: true
+        })
+    }
+    contractElement = () => {
+        LayoutAnimation.configureNext({
+            duration: 1000,
+            create: {
+                type: LayoutAnimation.Types.spring,
+                property: LayoutAnimation.Properties.scaleXY,
+                springDamping: 0.7,
+            },
+            update: {
+                type: LayoutAnimation.Types.spring,
+                springDamping: 0.7,
+            },
+
+        });
+        this.setState({
+            homeStationView: {
+                flex: 1 / 2,
+                alignItems: "center",
+                backgroundColor: "#FFF"
+            },
+            homeImageView: {
+                flex: 1 / 2,
+                backgroundColor: "#FFF"
+            },
+            expanded: false
+        })
+        Keyboard.dismiss()
+    }
+    renderItem = ({ item }) => {
+        const opacityOfSelectedItem = 1
+        const { selectedItem } = this.props;
+
+        return (
+
+            <View
+                style={{
+                    opacity: opacityOfSelectedItem,
+                    backgroundColor: 'transparent',
+                }}
+            >
+                <ListItem
+                    item={item}
+                    isHidden={!this.state.expanded}
+                    onPress={() => this.props.navigation.navigate("WorkStationView")}
+                />
+            </View>
+        );
+    };
     render() {
         return (
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+            <TouchableWithoutFeedback onPress={this.contractElement} accessible={false}>
                 <View style={styles.container}>
-                    <View style={styles.imageContainer}>
+                    <View style={this.state.homeImageView}>
                         <Image resizeMode={"cover"} source={require("../assets/home.png")} style={styles.image} />
                     </View>
-                    <View style={styles.homeStationContainer}>
+                    <View style={this.state.homeStationView}>
                         <View style={styles.homeStationTextInputContainer}>
-                            <TextInput placeholderTextColor={"#6F8FA9"} placeholder={"What train do you take to work?"} style={styles.homeStationTextInput} />
+                            <TextInput placeholderTextColor={"#6F8FA9"} placeholder={"What station do you take from home?"} style={styles.homeStationTextInput} onTouchStart={this.expandElement} onChangeText={this.search} />
                             <Image source={require("../assets/searchIcon.png")} style={styles.searchIcon} />
                         </View>
+                        <View style={{ top: 100, width: Dimensions.get('window').width * .83 }}>
+                            {this.state.expanded && (<FlatList
+                                data={data}
+                                renderItem={this.renderItem}
+                            />)}
+                        </View>
                     </View>
+
                 </View>
             </TouchableWithoutFeedback>
+
         )
     }
 }
@@ -34,7 +126,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFF"
     },
     imageContainer: {
-        flex: 5 / 10,
+        // flex: 5 / 10,
         justifyContent: 'center',
         alignItems: 'center',
         position: 'relative'
@@ -47,7 +139,7 @@ const styles = StyleSheet.create({
         flex: 5 / 10,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        position: 'relative'
+        position: 'relative',
     },
     homeStationTextInputContainer: {
         shadowColor: 'black',
