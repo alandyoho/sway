@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { HomeStationView, WorkStationView } from "./views"
+import { HomeStationView, WorkStationView, HomeStationSearchView } from "./views"
 import { createStackNavigator } from 'react-navigation';
 import { Font } from "expo"
 
@@ -33,6 +33,9 @@ export default class SwapApp extends Component {
     await Font.loadAsync({
       'Merriweather': require("./assets/Merriweather.otf"),
       'Merriweather-Bold': require("./assets/Merriweather-Bold.otf"),
+      "Roboto-Light": require("./assets/Roboto-Light.ttf"),
+      "Roboto": require("./assets/Roboto.ttf")
+
     });
     this.setState({ fontLoaded: true })
   }
