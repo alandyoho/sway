@@ -118,7 +118,7 @@ export default class WorkStationView extends Component {
                             <TextInput placeholderTextColor={"#6F8FA9"} placeholder={"What station do you take from work?"} style={styles.workStationTextInput} onTouchStart={this.expandElement} onChangeText={this.search} />
                             <Image source={require("../assets/searchIcon.png")} style={styles.searchIcon} />
                         </View>
-                        <View style={{ top: 100, width: Dimensions.get('window').width * .83 }}>
+                        <View style={{ top: 95, width: Dimensions.get('window').width * .83 }}>
                             {this.state.expanded && (<FlatList
                                 data={this.state.stations}
                                 renderItem={this.renderItem}

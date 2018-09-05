@@ -26,14 +26,15 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         marginHorizontal: 16,
-        marginVertical: 4,
+        marginVertical: 0,
         paddingVertical: 8,
         paddingHorizontal: 16,
-        borderRadius: 5,
+        borderRadius: 0,
         shadowColor: 'black',
         shadowOffset: { height: 5, width: 5 },
         shadowOpacity: 0.4,
         shadowRadius: 5,
+        zIndex: -1
 
     },
 });
