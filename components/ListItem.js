@@ -1,20 +1,17 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Text, View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import { ScaleAndOpacity } from 'react-native-motion';
 
 
-class ListItem extends PureComponent {
+class ListItem extends Component {
     onPressed = () => {
-        this.props.onPress()
-    };
+        this.props.onPress(this.props.item.stationName)
+    }
     render() {
         const { item, isSelected, style, isHidden, animateOnDidMount } = this.props;
         const { name, isReceived, ...rest } = item;
         return (
-            <ScaleAndOpacity
-                isHidden={isHidden}
-                animateOnDidMount={animateOnDidMount}
-            >
+            <ScaleAndOpacity isHidden={isHidden} animateOnDidMount={animateOnDidMount}>
                 <TouchableWithoutFeedback onPress={this.onPressed}>
                     <View style={[styles.container, style]} pointerEvents="box-only">
                         <Text style={{ fontFamily: 'Roboto', color: "#6F8FA9" }}>{item.stationName}</Text>
@@ -29,15 +26,15 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         marginHorizontal: 16,
-        marginVertical: 4,
+        marginVertical: 0,
         paddingVertical: 8,
         paddingHorizontal: 16,
-        borderRadius: 5,
-
+        borderRadius: 0,
         shadowColor: 'black',
         shadowOffset: { height: 5, width: 5 },
         shadowOpacity: 0.4,
         shadowRadius: 5,
+        zIndex: -1
 
     },
 });

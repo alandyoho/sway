@@ -1,1 +1,1 @@
-export default [{ key: "1", stationName: 'Penn Station' }, { key: "2", stationName: '96th St' }]
+export default [{ key: "1", stationName: 'South Ferry' }, { key: "2", stationName: 'Rector St' }, { key: "3", stationName: "Chambers St" }, { key: "4", stationName: "Franklin St" }, { key: "5", stationName: "Canal St" }, { key: "6", stationName: "Houston St" }, { key: "7", stationName: "Christopher St-Sheridan Sq" }, { key: "8", stationName: "14 St" }, { key: "9", stationName: "18 St" }, { key: "10", stationName: "23 St" }]
