@@ -1,11 +1,12 @@
 import React, { Component } from "react"
 import { View, Image, Dimensions, StyleSheet, FlatList, Text, Animated, TextInput, TouchableWithoutFeedback, Keyboard, LayoutAnimation } from "react-native"
-import ListItem from "./ListItem"
+import ListItem from "../components/ListItem"
 import data from "./data"
 export default class HomeStationView extends Component {
     constructor() {
         super()
         this.state = {
+            stations: [],
             homeStation: "",
             expanded: false,
             homeStationView: {
@@ -18,6 +19,13 @@ export default class HomeStationView extends Component {
                 backgroundColor: "#FFF"
             }
         }
+    }
+    search = (text) => {
+        const filt = data.filter(val => val.stationName.toLowerCase().includes(text.toLowerCase()))
+        this.setState({ stations: filt })
+    }
+    componentDidMount() {
+        this.setState({ stations: data })
     }
     expandElement = () => {
         LayoutAnimation.configureNext({
@@ -43,6 +51,10 @@ export default class HomeStationView extends Component {
             },
             expanded: true
         })
+    }
+    selectHomeStation = (name) => {
+        this.setState({ homeStation: name })
+        this.props.navigation.navigate("WorkStationView")
     }
     contractElement = () => {
         LayoutAnimation.configureNext({
@@ -87,7 +99,7 @@ export default class HomeStationView extends Component {
                 <ListItem
                     item={item}
                     isHidden={!this.state.expanded}
-                    onPress={() => this.props.navigation.navigate("WorkStationView")}
+                    onPress={this.selectHomeStation}
                 />
             </View>
         );
@@ -101,12 +113,12 @@ export default class HomeStationView extends Component {
                     </View>
                     <View style={this.state.homeStationView}>
                         <View style={styles.homeStationTextInputContainer}>
-                            <TextInput placeholderTextColor={"#6F8FA9"} placeholder={"What station do you take from home?"} style={styles.homeStationTextInput} onTouchStart={this.expandElement} onChangeText={this.search} />
+                            <TextInput placeholderTextColor={"#6F8FA9"} placeholder={"What station do you take from home?"} style={styles.homeStationTextInput} onTouchStart={this.expandElement} onChangeText={(text) => this.search(text)} />
                             <Image source={require("../assets/searchIcon.png")} style={styles.searchIcon} />
                         </View>
                         <View style={{ top: 100, width: Dimensions.get('window').width * .83 }}>
                             {this.state.expanded && (<FlatList
-                                data={data}
+                                data={this.state.stations}
                                 renderItem={this.renderItem}
                             />)}
                         </View>

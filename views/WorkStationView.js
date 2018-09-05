@@ -1,12 +1,13 @@
 import React, { Component } from "react"
 import { View, Image, Dimensions, StyleSheet, FlatList, Text, Animated, TextInput, TouchableWithoutFeedback, Keyboard, LayoutAnimation } from "react-native"
-import ListItem from "./ListItem"
+import ListItem from "../components/ListItem"
 import data from "./data"
 export default class WorkStationView extends Component {
     constructor() {
         super()
         this.state = {
             workStation: "",
+            stations: [],
             expanded: false,
             workStationView: {
                 flex: 1 / 2,
@@ -18,6 +19,19 @@ export default class WorkStationView extends Component {
                 backgroundColor: "#FFF"
             }
         }
+    }
+    search = (text) => {
+        const filt = data.filter(val => val.stationName.toLowerCase().includes(text.toLowerCase()))
+        this.setState({ stations: filt })
+    }
+    componentDidMount() {
+        this.setState({ stations: data })
+
+    }
+    selectWorkStation = (name) => {
+        this.setState({ workStation: name })
+        this.props.navigation.navigate("LandingView")
+
     }
     expandElement = () => {
         LayoutAnimation.configureNext({
@@ -87,7 +101,7 @@ export default class WorkStationView extends Component {
                 <ListItem
                     item={item}
                     isHidden={!this.state.expanded}
-                    onPress={() => this.props.navigation.navigate("WorkStationView")}
+                    onPress={this.selectWorkStation}
                 />
             </View>
         );
@@ -106,7 +120,7 @@ export default class WorkStationView extends Component {
                         </View>
                         <View style={{ top: 100, width: Dimensions.get('window').width * .83 }}>
                             {this.state.expanded && (<FlatList
-                                data={data}
+                                data={this.state.stations}
                                 renderItem={this.renderItem}
                             />)}
                         </View>
