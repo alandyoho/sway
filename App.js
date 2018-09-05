@@ -43,8 +43,8 @@ export default class SwapApp extends Component {
       'Merriweather': require("./assets/Merriweather.otf"),
       'Merriweather-Bold': require("./assets/Merriweather-Bold.otf"),
       "Roboto-Light": require("./assets/Roboto-Light.ttf"),
-      "Roboto": require("./assets/Roboto.ttf")
-
+      "Roboto": require("./assets/Roboto.ttf"),
+      "Roboto-Black": require("./assets/Roboto-Black.ttf"),
     });
     this.setState({ fontLoaded: true })
   }
