@@ -144,7 +144,8 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width * .83,
         height: 41,
         top: 94,
-        justifyContent: "center"
+        justifyContent: "center",
+        zIndex: 10
     },
     homeStationTextInput: {
         alignItems: "center",

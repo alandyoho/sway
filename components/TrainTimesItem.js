@@ -10,10 +10,10 @@ class TrainTimesItem extends Component {
             <ScaleAndOpacity isHidden={isHidden} animateOnDidMount={animateOnDidMount}>
                 <TouchableWithoutFeedback >
                     <View style={[styles.container, style]} pointerEvents="box-only">
-                        <Text style={[{ fontFamily: 'Roboto-Black', color: "#0e5a77", fontSize: 20 }, item.key === "1" && { color: "#FFF" }]}>{item.stationName}</Text>
+                        <Text style={[{ fontFamily: 'Roboto-Black', color: "#0e5a77", fontSize: 15 }, item.key === "1" && { color: "#FFF" }]}>{item.stationName}</Text>
                     </View>
                 </TouchableWithoutFeedback>
-            </ScaleAndOpacity>
+            </ScaleAndOpacity >
         )
     }
 }
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         marginHorizontal: 75,
         marginVertical: 4,
-        paddingVertical: 8,
+        paddingVertical: 12,
         paddingHorizontal: 16,
         borderRadius: 5,
         shadowColor: 'black',

@@ -7,20 +7,20 @@ import { Font } from "expo"
 
 const Sway = createStackNavigator(
   {
-    HomeStationView: {
-      screen: HomeStationView,
-      navigationOptions: {
-        header: null,
-        gesturesEnabled: false
-      }
-    },
-    WorkStationView: {
-      screen: WorkStationView,
-      navigationOptions: {
-        header: null,
-        gesturesEnabled: false
-      }
-    },
+    // HomeStationView: {
+    //   screen: HomeStationView,
+    //   navigationOptions: {
+    //     header: null,
+    //     gesturesEnabled: false
+    //   }
+    // },
+    // WorkStationView: {
+    //   screen: WorkStationView,
+    //   navigationOptions: {
+    //     header: null,
+    //     gesturesEnabled: false
+    //   }
+    // },
     LandingView: {
       screen: LandingView,
       navigationOptions: {

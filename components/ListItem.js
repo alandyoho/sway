@@ -14,7 +14,7 @@ class ListItem extends Component {
             <ScaleAndOpacity isHidden={isHidden} animateOnDidMount={animateOnDidMount}>
                 <TouchableWithoutFeedback onPress={this.onPressed}>
                     <View style={[styles.container, style]} pointerEvents="box-only">
-                        <Text style={{ fontFamily: 'Roboto', color: "#6F8FA9" }}>{item.stationName}</Text>
+                        <Text style={{ fontFamily: 'Roboto', color: "#6F8FA9", fontSize: 15 }}>{item.stationName}</Text>
                     </View>
                 </TouchableWithoutFeedback>
             </ScaleAndOpacity>
@@ -27,14 +27,14 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         marginHorizontal: 16,
         marginVertical: 0,
-        paddingVertical: 8,
+        paddingVertical: 12,
         paddingHorizontal: 16,
         borderRadius: 0,
         shadowColor: 'black',
         shadowOffset: { height: 5, width: 5 },
         shadowOpacity: 0.4,
         shadowRadius: 5,
-        zIndex: -1
+        zIndex: 5
 
     },
 });

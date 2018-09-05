@@ -1,13 +1,16 @@
 import React, { Component } from "react"
-import { View, Image, Dimensions, StyleSheet, FlatList, Text, Animated, TextInput, TouchableWithoutFeedback, Keyboard, LayoutAnimation, TouchableOpacity } from "react-native"
+import { View, Image, Dimensions, StyleSheet, FlatList, Button, Text, Animated, TextInput, TouchableWithoutFeedback, Keyboard, LayoutAnimation, TouchableOpacity } from "react-native"
 import TrainTimesItem from "../components/TrainTimesItem"
+import SlidingUpPanel from 'rn-sliding-up-panel';
+
 export default class LandingView extends Component {
     constructor() {
         super()
         this.state = {
             workStation: "",
             homeStation: "",
-            left: false
+            left: false,
+            settingsViewVisible: false
         }
     }
     renderItem = ({ item }) => {
@@ -35,7 +38,7 @@ export default class LandingView extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.settingsView}>
-                    <TouchableOpacity >
+                    <TouchableOpacity onPress={() => this.setState({ settingsViewVisible: true })}>
                         <Image source={require("../assets/settingsGearIcon.png")} style={styles.settingsGear} />
                     </TouchableOpacity>
                 </View>
@@ -62,6 +65,15 @@ export default class LandingView extends Component {
                         scrollEnabled={false}
                     />
                 </View>
+                <SlidingUpPanel
+                    visible={this.state.settingsViewVisible}
+                    onRequestClose={() => this.setState({ settingsViewVisible: false })}
+                    onDragStart={() => this.setState({ settingsViewVisible: false })}
+                    draggableRange={{ top: Dimensions.get("window").height * 0.9, bottom: 0 }}	>
+                    <View style={{ backgroundColor: "#FFF", height: Dimensions.get("window").height * 0.9, borderTopLeftRadius: 40, borderTopRightRadius: 40 }}>
+                        <Button title='Hide' onPress={() => this.setState({ settingsViewVisible: false })} />
+                    </View>
+                </SlidingUpPanel>
             </View>
         )
     }
