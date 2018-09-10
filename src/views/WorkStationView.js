@@ -10,12 +10,12 @@ export default class WorkStationView extends Component {
             stations: [],
             expanded: false,
             workStationView: {
-                flex: 1 / 2,
+                flex: 9 / 20,
                 alignItems: "center",
                 backgroundColor: "#FFF"
             },
             workImageView: {
-                flex: 1 / 2,
+                flex: 11 / 20,
                 backgroundColor: "#FFF"
             }
         }
@@ -35,7 +35,7 @@ export default class WorkStationView extends Component {
     }
     expandElement = () => {
         LayoutAnimation.configureNext({
-            duration: 1000,
+            duration: 1500,
             create: {
                 type: LayoutAnimation.Types.spring,
                 property: LayoutAnimation.Properties.scaleXY,
@@ -60,7 +60,7 @@ export default class WorkStationView extends Component {
     }
     contractElement = () => {
         LayoutAnimation.configureNext({
-            duration: 1000,
+            duration: 1500,
             create: {
                 type: LayoutAnimation.Types.spring,
                 property: LayoutAnimation.Properties.scaleXY,
@@ -74,12 +74,12 @@ export default class WorkStationView extends Component {
         });
         this.setState({
             workStationView: {
-                flex: 1 / 2,
+                flex: 9 / 20,
                 alignItems: "center",
                 backgroundColor: "#FFF"
             },
             workImageView: {
-                flex: 1 / 2,
+                flex: 11 / 20,
                 backgroundColor: "#FFF"
             },
             expanded: false
@@ -87,14 +87,10 @@ export default class WorkStationView extends Component {
         Keyboard.dismiss()
     }
     renderItem = ({ item }) => {
-        const opacityOfSelectedItem = 1
-        const { selectedItem } = this.props;
-
         return (
-
             <View
                 style={{
-                    opacity: opacityOfSelectedItem,
+                    opacity: 1,
                     backgroundColor: 'transparent',
                 }}
             >
@@ -125,10 +121,8 @@ export default class WorkStationView extends Component {
                             />)}
                         </View>
                     </View>
-
                 </View>
             </TouchableWithoutFeedback>
-
         )
     }
 }
@@ -139,21 +133,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#FFF"
     },
-    imageContainer: {
-        // flex: 5 / 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative'
-    },
     image: {
         flex: 1,
         width: Dimensions.get('window').width
-    },
-    workStationContainer: {
-        flex: 5 / 10,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        position: 'relative',
     },
     workStationTextInputContainer: {
         shadowColor: 'black',
@@ -165,7 +147,9 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width * .83,
         height: 41,
         top: 94,
-        justifyContent: "center"
+        justifyContent: "center",
+        zIndex: 10
+
     },
     workStationTextInput: {
         alignItems: "center",
