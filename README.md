@@ -9,9 +9,10 @@ Sway is a collaborative project between myself and Audrey Levy, an IDEO minted i
 ## Built With
 ![Alt Text](https://github.com/alandyoho/sway/blob/master/src/assets/swayStack.png)
 
+* [JavaScript](https://www.javascript.com/) - The primary language used
 * [React Native](https://github.com/facebook/react-native) - The mobile framework used
-* [Google Firebase/Firestore](https://firebase.google.com/) - Backend Database
-* [Stripe](https://www.npmjs.com/package/stripe) - Processing payments
+* [NYC MTA API](http://datamine.mta.info/) - Data source
+* [Figma](https://www.figma.com/) - Prototyping software used
 
 ## Developers
 * **Alan Yoho** - [alandyoho](https://github.com/alandyoho)
