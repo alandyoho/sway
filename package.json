@@ -30,7 +30,6 @@
     "events": "^1.0.0",
     "expo": "^27.0.1",
     "https-browserify": "~0.0.0",
-    "mta-gtfs": "^1.1.0",
     "path-browserify": "0.0.0",
     "process": "^0.11.0",
     "querystring-es3": "~0.2.0",

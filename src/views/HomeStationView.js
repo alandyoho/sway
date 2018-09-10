@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { View, Image, Dimensions, StyleSheet, FlatList, Text, Animated, TextInput, TouchableWithoutFeedback, Keyboard, LayoutAnimation } from "react-native"
 import ListItem from "../components/ListItem"
 import data from "./data"
+
 export default class HomeStationView extends Component {
     constructor() {
         super()
@@ -26,6 +27,7 @@ export default class HomeStationView extends Component {
     }
     componentDidMount() {
         this.setState({ stations: data })
+
     }
     expandElement = () => {
         LayoutAnimation.configureNext({
