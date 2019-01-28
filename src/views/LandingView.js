@@ -3,22 +3,34 @@ import { View, Image, Dimensions, StyleSheet, FlatList, Button, Text, Animated, 
 import TrainTimesItem from "../components/TrainTimesItem"
 import SlidingUpPanel from 'rn-sliding-up-panel';
 import data from "./data"
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addStations, storeWorkStation } from "../actions"
+import { functions } from "../firebase/firebase"
 
-export default class LandingView extends Component {
+
+class LandingView extends Component {
     constructor() {
         super()
         this.state = {
             station: [],
-            workStation: "96th St",
-            homeStation: "Penn Station",
+            workStation: "Van Cortlandt Park - 242 St",
+            homeStation: "Van Cortlandt Park - 242 St",
             left: false,
             settingsViewVisible: false,
             homeInputSelected: false,
-            workInputSelected: false
+            workInputSelected: false,
+            trainTimes: ""
         }
     }
-    componentDidMount() {
-        this.fetchData()
+    async componentDidMount() {
+        this.setState({ workStation: this.props.workStation["stop_name"], homeStation: this.props.homeStation["stop_name"] })
+        const stopId = this.props.workStation["stop_id"]
+        const { data } = await functions.httpsCallable("fetchStationTimes")({ stopId: stopId })
+        const trainTimes = data.schedule[stopId]["N"]
+        console.log("here are the station times", trainTimes)
+        this.setState({ trainTimes: trainTimes })
+        // console.log("here are the stations", this.props.homeStation, this.props.workStation)
     }
     renderItem = ({ item }) => {
         const opacityOfSelectedItem = 1
@@ -44,12 +56,7 @@ export default class LandingView extends Component {
         this.setState({ stations: filt })
     }
     fetchData = async () => {
-        try {
-            const data = await fetch("http://datamine.mta.info/mta_esi.php?key=ad8e9ea7b72089fe0ee8d43a747754a1&feed_id=1")
-            console.log(data)
-        } catch (err) {
-            console.log(err)
-        }
+
     }
     expandHomeElement = () => {
         this.setState({ homeInputSelected: true, workInputSelected: false })
@@ -65,15 +72,16 @@ export default class LandingView extends Component {
                         <Image source={require("../assets/settingsGearIcon.png")} style={styles.settingsGear} />
                     </TouchableOpacity>
                 </View>
+
                 <View style={styles.homeWorkView}>
-                    <TouchableOpacity onPress={() => this.setState({ left: true })}>
+                    <TouchableOpacity onPress={() => this.setState({ left: true })} style={styles.homeWorkViewContents}>
                         <Image source={this.state.left ? require("../assets/selectedHomeIcon.png") : require("../assets/homeIcon.png")} style={styles.image} />
                         <Text style={{ fontFamily: !this.state.left ? "Merriweather" : "Merriweather-Bold", color: "#6F8FA9", textAlign: "center", textDecorationLine: this.state.left ? "underline" : "none" }}>{this.state.homeStation}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.setState({ left: !this.state.left })} style={styles.frame}>
                         <Image source={this.state.left ? require("../assets/arrowLeft.png") : require("../assets/arrow.png")} style={styles.arrow} />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.setState({ left: false })}>
+                    <TouchableOpacity onPress={() => this.setState({ left: false })} style={styles.homeWorkViewContents}>
                         <Image source={this.state.left ? require("../assets/workIcon.png") : require("../assets/selectedWorkIcon.png")} style={styles.image} />
                         <Text style={{ fontFamily: this.state.left ? "Merriweather" : "Merriweather-Bold", color: "#6F8FA9", textAlign: "center", textDecorationLine: !this.state.left ? "underline" : "none" }}>{this.state.workStation}</Text>
                     </TouchableOpacity>
@@ -82,7 +90,7 @@ export default class LandingView extends Component {
                 </View>
                 <View style={styles.trainTimes}>
                     <FlatList
-                        data={[{ key: "1", stationName: "8:33" }, { key: "2", stationName: "8:35" }, { key: "3", stationName: "8:39" }, { key: "5", stationName: "8:43" }]}
+                        data={this.state.trainTimes}
                         renderItem={this.renderItem}
                         scrollEnabled={false}
                     />
@@ -104,7 +112,32 @@ export default class LandingView extends Component {
 }
 
 
+const mapStateToProps = (state) => {
+    const { stations, homeStation, workStation } = state
+    return { stations, homeStation, workStation }
+};
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+        addStations,
+        storeWorkStation
+    }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingView);
+
+
+
+
+
+
+
 const styles = StyleSheet.create({
+    homeWorkViewContents: {
+        flex: 1,
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center"
+    },
     settingsGear: {
         width: 30,
         height: 30,
@@ -136,9 +169,10 @@ const styles = StyleSheet.create({
     },
     homeWorkView: {
         flexDirection: "row",
-        justifyContent: "center",
         alignItems: "center",
-        flex: 2 / 8
+        flex: 2 / 8,
+        justifyContent: "space-evenly",
+        padding: 15
     },
     changeStationView: {
         flex: 1 / 8

@@ -2,12 +2,18 @@ import React, { Component } from "react"
 import { View, Image, Dimensions, StyleSheet, FlatList, Text, Animated, TextInput, TouchableWithoutFeedback, Keyboard, LayoutAnimation } from "react-native"
 import ListItem from "../components/ListItem"
 import data from "./data"
-export default class WorkStationView extends Component {
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addStations, storeWorkStation } from "../actions"
+
+
+class WorkStationView extends Component {
     constructor() {
         super()
         this.state = {
-            workStation: "",
             stations: [],
+            filteredStations: [],
+            workStation: "",
             expanded: false,
             workStationView: {
                 flex: 9 / 20,
@@ -21,17 +27,16 @@ export default class WorkStationView extends Component {
         }
     }
     search = (text) => {
-        const filt = data.filter(val => val.stationName.toLowerCase().includes(text.toLowerCase()))
-        this.setState({ stations: filt })
+        const { stations } = this.state
+        const filt = stations.filter(val => val["stop_name"].toLowerCase().includes(text.toLowerCase()))
+        this.setState({ filteredStations: filt })
     }
     componentDidMount() {
-        this.setState({ stations: data })
-
+        this.setState({ stations: data, filteredStations: data })
     }
-    selectWorkStation = (name) => {
-        this.setState({ workStation: name })
+    selectWorkStation = (station) => {
+        this.props.storeWorkStation(station)
         this.props.navigation.navigate("LandingView")
-
     }
     expandElement = () => {
         LayoutAnimation.configureNext({
@@ -114,18 +119,37 @@ export default class WorkStationView extends Component {
                             <TextInput placeholderTextColor={"#6F8FA9"} placeholder={"What station do you take from work?"} style={styles.workStationTextInput} onTouchStart={this.expandElement} onChangeText={this.search} />
                             <Image source={require("../assets/searchIcon.png")} style={styles.searchIcon} />
                         </View>
-                        <View style={{ top: 95, width: Dimensions.get('window').width * .83, height: Dimensions.get("window").height }}>
-                            {this.state.expanded && (<FlatList
+                        {this.state.expanded && <View style={[styles.workStationList, { height: this.state.filteredStations.length !== this.state.stations.length && this.state.filteredStations.length * 45 < 315 ? this.state.filteredStations.length * 45 - 1 : 314 }]}>
+                            <FlatList
                                 data={this.state.stations}
                                 renderItem={this.renderItem}
-                            />)}
-                        </View>
+                            />
+                        </View>}
                     </View>
                 </View>
             </TouchableWithoutFeedback>
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+    const { stations, homeStation, workStation } = state
+    return { stations, homeStation, workStation }
+};
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+        addStations,
+        storeWorkStation
+    }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(WorkStationView);
+
+
+
+
+
 
 
 const styles = StyleSheet.create({
@@ -157,6 +181,17 @@ const styles = StyleSheet.create({
         fontFamily: "Merriweather-Bold",
         color: "#6F8FA9"
     },
+    workStationList: {
+        shadowColor: 'black',
+        shadowOffset: { height: 5, width: 5 },
+        shadowOpacity: 0.4,
+        shadowRadius: 5,
+        borderRadius: 5,
+        backgroundColor: "white",
+        top: 95,
+        width: Dimensions.get("window").width * .73,
+    },
+
     searchIcon: {
         position: "absolute",
         height: 13,

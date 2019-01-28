@@ -5,7 +5,7 @@ import { ScaleAndOpacity } from 'react-native-motion';
 
 class ListItem extends Component {
     onPressed = () => {
-        this.props.onPress(this.props.item.stationName)
+        this.props.onPress(this.props.item)
     }
     render() {
         const { item, isSelected, style, isHidden, animateOnDidMount } = this.props;
@@ -14,7 +14,7 @@ class ListItem extends Component {
             <ScaleAndOpacity isHidden={isHidden} animateOnDidMount={animateOnDidMount}>
                 <TouchableWithoutFeedback onPress={this.onPressed}>
                     <View style={[styles.container, style]} pointerEvents="box-only">
-                        <Text style={{ fontFamily: 'Roboto', color: "#6F8FA9", fontSize: 15 }}>{item.stationName}</Text>
+                        <Text style={{ fontFamily: 'Roboto', color: "#6F8FA9", fontSize: 15 }}>{item["stop_name"]}</Text>
                     </View>
                 </TouchableWithoutFeedback>
             </ScaleAndOpacity>
@@ -24,18 +24,15 @@ class ListItem extends Component {
 
 const styles = StyleSheet.create({
     container: {
+        height: 45,
         backgroundColor: 'white',
         marginHorizontal: 16,
         marginVertical: 0,
         paddingVertical: 12,
         paddingHorizontal: 16,
-        borderRadius: 0,
-        shadowColor: 'black',
-        shadowOffset: { height: 5, width: 5 },
-        shadowOpacity: 0.4,
-        shadowRadius: 5,
+        borderBottomColor: "black",
+        borderBottomWidth: 0.5,
         zIndex: 5
-
     },
 });
 

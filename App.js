@@ -5,6 +5,12 @@ import { createStackNavigator } from 'react-navigation';
 import { Font } from "expo"
 
 
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import userReducer from './src/reducer';
+
+const store = createStore(userReducer)
+
 const Sway = createStackNavigator(
   {
     HomeStationView: {
@@ -50,9 +56,9 @@ export default class SwapApp extends Component {
   }
   render() {
     return this.state.fontLoaded && (
-      <React.Fragment>
+      <Provider store={store}>
         <Sway />
-      </React.Fragment>
+      </Provider>
     )
   }
 }

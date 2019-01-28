@@ -1,13 +1,18 @@
 import React, { Component } from "react"
 import { View, Image, Dimensions, StyleSheet, FlatList, Text, Animated, TextInput, TouchableWithoutFeedback, Keyboard, LayoutAnimation } from "react-native"
 import ListItem from "../components/ListItem"
+import { functions } from "../firebase/firebase"
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addStations, storeHomeStation } from "../actions"
 import data from "./data"
 
-export default class HomeStationView extends Component {
+class HomeStationView extends Component {
     constructor() {
         super()
         this.state = {
             stations: [],
+            filteredStations: [],
             homeStation: "",
             expanded: false,
             homeStationView: {
@@ -21,12 +26,17 @@ export default class HomeStationView extends Component {
             }
         }
     }
+
     search = (text) => {
-        const filt = data.filter(val => val.stationName.toLowerCase().includes(text.toLowerCase()))
-        this.setState({ stations: filt })
+        const { stations } = this.state
+        const filt = stations.filter(val => val["stop_name"].toLowerCase().includes(text.toLowerCase()))
+        this.setState({ filteredStations: filt })
     }
-    componentDidMount() {
-        this.setState({ stations: data })
+
+    async componentDidMount() {
+        // const { data } = await functions.httpsCallable("fetchAllStations")({})
+        // this.props.addStations(data)
+        this.setState({ stations: data, filteredStations: data })
 
     }
     expandElement = () => {
@@ -54,9 +64,10 @@ export default class HomeStationView extends Component {
             expanded: true
         })
     }
-    selectHomeStation = (name) => {
-        this.setState({ homeStation: name })
+    selectHomeStation = (station) => {
+        this.props.storeHomeStation(station)
         this.props.navigation.navigate("WorkStationView")
+
     }
     contractElement = () => {
         LayoutAnimation.configureNext({
@@ -92,6 +103,7 @@ export default class HomeStationView extends Component {
                 style={{
                     opacity: 1,
                     backgroundColor: 'transparent',
+                    borderRadius: 5
                 }}
             >
                 <ListItem
@@ -103,29 +115,51 @@ export default class HomeStationView extends Component {
         );
     };
     render() {
+        const { filteredStations, homeStationView, expanded } = this.state
+        const { width, height } = Dimensions.get("window")
         return (
             <TouchableWithoutFeedback onPress={this.contractElement} accessible={false}>
                 <View style={styles.container}>
                     <View style={this.state.homeImageView}>
                         <Image resizeMode={"cover"} source={require("../assets/home.png")} style={styles.image} />
                     </View>
-                    <View style={this.state.homeStationView}>
+                    <View style={homeStationView}>
                         <View style={styles.homeStationTextInputContainer}>
                             <TextInput placeholderTextColor={"#6F8FA9"} placeholder={"What station do you take from home?"} style={styles.homeStationTextInput} onTouchStart={this.expandElement} onChangeText={(text) => this.search(text)} />
                             <Image source={require("../assets/searchIcon.png")} style={styles.searchIcon} />
                         </View>
-                        <View style={{ top: 95, width: Dimensions.get('window').width * .83, height: Dimensions.get("window").height }}>
-                            {this.state.expanded && (<FlatList
-                                data={this.state.stations}
+                        {expanded && <View style={[styles.homeStationList, { height: this.state.filteredStations.length !== this.state.stations.length && this.state.filteredStations.length * 45 < 315 ? this.state.filteredStations.length * 45 - 1 : 314 }]}>
+                            {(<FlatList
+                                data={filteredStations}
                                 renderItem={this.renderItem}
                             />)}
-                        </View>
+                        </View>}
                     </View>
                 </View>
             </TouchableWithoutFeedback>
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+    const { stations, homeStation } = state
+    return { stations, homeStation }
+};
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+        addStations,
+        storeHomeStation
+    }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeStationView);
+
+
+
+
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -149,6 +183,17 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         zIndex: 10
     },
+    homeStationList: {
+        shadowColor: 'black',
+        shadowOffset: { height: 5, width: 5 },
+        shadowOpacity: 0.4,
+        shadowRadius: 5,
+        borderRadius: 5,
+        backgroundColor: "white",
+        top: 95,
+        width: Dimensions.get("window").width * .73,
+    },
+
     homeStationTextInput: {
         alignItems: "center",
         left: 6,
