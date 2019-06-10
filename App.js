@@ -33,7 +33,8 @@ const Sway = createStackNavigator(
         header: null,
         gesturesEnabled: false
       }
-    }
+    },
+
   },
 );
 

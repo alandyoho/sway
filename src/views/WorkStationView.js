@@ -32,6 +32,7 @@ class WorkStationView extends Component {
         this.setState({ filteredStations: filt })
     }
     componentDidMount() {
+        // console.log("stored homeStation", this.props.homeStation)
         this.setState({ stations: data, filteredStations: data })
     }
     selectWorkStation = (station) => {
@@ -101,6 +102,7 @@ class WorkStationView extends Component {
             >
                 <ListItem
                     item={item}
+                    key={item["stop_name"]}
                     isHidden={!this.state.expanded}
                     onPress={this.selectWorkStation}
                 />
@@ -121,7 +123,8 @@ class WorkStationView extends Component {
                         </View>
                         {this.state.expanded && <View style={[styles.workStationList, { height: this.state.filteredStations.length !== this.state.stations.length && this.state.filteredStations.length * 45 < 315 ? this.state.filteredStations.length * 45 - 1 : 314 }]}>
                             <FlatList
-                                data={this.state.stations}
+                                keyboardShouldPersistTaps={"handled"}
+                                data={this.state.filteredStations}
                                 renderItem={this.renderItem}
                             />
                         </View>}

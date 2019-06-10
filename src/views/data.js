@@ -3,39 +3,39 @@
 const data = [
     {
         stop_name: "Van Cortlandt Park - 242 St",
-        stop_trains: [{ train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Downtown", train_id: "101S", train_station: "Van Cortlandt Park - 242 St" }],
     },
     {
         stop_name: "238 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "103N", train_station: "238 St" }, { train_name: "1", train_direction: "Downtown", train_id: "103S", train_station: "238 St" }],
     },
     {
         stop_name: "231 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "104N", train_station: "231 St" }, { train_name: "1", train_direction: "Downtown", train_id: "104S", train_station: "231 St" }],
     },
     {
         stop_name: "Marble Hill - 225 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "106N", train_station: "Marble Hill - 225 St" }, { train_name: "1", train_direction: "Downtown", train_id: "106S", train_station: "Marble Hill - 225 St" }],
     },
     {
         stop_name: "215 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "107N", train_station: "215 St" }, { train_name: "1", train_direction: "Downtown", train_id: "107S", train_station: "215 St" }],
     },
     {
         stop_name: "207 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "108N", train_station: "207 St" }, { train_name: "1", train_direction: "Downtown", train_id: "108S", train_station: "207 St" }],
     },
     {
         stop_name: "Dyckman St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "109N", train_station: "Dyckman St" }, { train_name: "1", train_direction: "Downtown", train_id: "109S", train_station: "Dyckman St" }],
     },
     {
         stop_name: "191 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "110N", train_station: "191 St" }, { train_name: "1", train_direction: "Downtown", train_id: "110S", train_station: "191 St" }],
     },
     {
         stop_name: "181 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "111N", train_station: "181 St" }, { train_name: "1", train_direction: "Downtown", train_id: "111S", train_station: "181 St" }],
     },
     {
         stop_name: "168 St",
@@ -43,115 +43,115 @@ const data = [
     },
     {
         stop_name: "157 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "113N", train_station: "157 St" }, { train_name: "1", train_direction: "Downtown", train_id: "113S", train_station: "157 St" }],
     },
     {
         stop_name: "145 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "114N", train_station: "145 St" }, { train_name: "1", train_direction: "Downtown", train_id: "114S", train_station: "145 St" }],
     },
     {
         stop_name: "137 St - City College",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "115N", train_station: "137 St - City College" }, { train_name: "1", train_direction: "Downtown", train_id: "115S", train_station: "137 St - City College" }],
     },
     {
         stop_name: "125 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "116N", train_station: "125 St" }, { train_name: "1", train_direction: "Downtown", train_id: "116S", train_station: "125 St" }],
     },
     {
         stop_name: "116 St - Columbia University",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "117N", train_station: "116 St - Columbia University" }, { train_name: "1", train_direction: "Downtown", train_id: "117S", train_station: "116 St - Columbia University" }],
     },
     {
         stop_name: "Cathedral Pkwy (110 St)",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "118N", train_station: "Cathedral Pkwy (110 St)" }, { train_name: "1", train_direction: "Downtown", train_id: "118S", train_station: "Cathedral Pkwy (110 St)" }],
     },
     {
         stop_name: "103 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "119N", train_station: "103 St" }, { train_name: "1", train_direction: "Downtown", train_id: "119S", train_station: "103 St" }],
     },
     {
         stop_name: "96 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }, { train_name: "2", train_direction: "Uptown" }, { train_name: "2", train_direction: "Downtown" }, { train_name: "3", train_direction: "Uptown" }, { train_name: "3", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "120N", train_station: "96 St" }, { train_name: "1", train_direction: "Downtown", train_id: "120S", train_station: "96 St" }, { train_name: "2", train_direction: "Uptown", train_id: "120N", train_station: "96 St" }, { train_name: "2", train_direction: "Downtown", train_id: "120S", train_station: "96 St" }, { train_name: "3", train_direction: "Uptown", train_id: "120N", train_station: "96 St" }, { train_name: "3", train_direction: "Downtown", train_id: "120S", train_station: "96 St" }],
     },
     {
         stop_name: "86 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "121N", train_station: "86 St" }, { train_name: "1", train_direction: "Downtown", train_id: "121S", train_station: "86 St" }],
     },
     {
         stop_name: "79 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "122N", train_station: "79 St" }, { train_name: "1", train_direction: "Downtown", train_id: "122S", train_station: "79 St" }],
     },
     {
         stop_name: "72 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }, { train_name: "2", train_direction: "Uptown" }, { train_name: "2", train_direction: "Downtown" }, { train_name: "3", train_direction: "Uptown" }, { train_name: "3", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: '123N', train_station: "72 St" }, { train_name: "1", train_direction: "Downtown", train_id: '123S', train_station: "72 St" }, { train_name: "2", train_direction: "Uptown", train_id: '123N', train_station: "72 St" }, { train_name: "2", train_direction: "Downtown", train_id: '123S', train_station: "72 St" }, { train_name: "3", train_direction: "Uptown", train_id: '123N', train_station: "72 St" }, { train_name: "3", train_direction: "Downtown", train_id: '123S', train_station: "72 St" }],
     },
     {
         stop_name: "66 St - Lincoln Center",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }, { train_name: "2", train_direction: "Uptown" }, { train_name: "2", train_direction: "Downtown" }, { train_name: "3", train_direction: "Uptown" }, { train_name: "3", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: '124N', train_station: "66 St - Lincoln Center" }, { train_name: "1", train_direction: "Downtown", train_id: '124S', train_station: "66 St - Lincoln Center" }, { train_name: "2", train_direction: "Uptown", train_id: '124N', train_station: "66 St - Lincoln Center" }, { train_name: "2", train_direction: "Downtown", train_id: '124S', train_station: "66 St - Lincoln Center" }, { train_name: "3", train_direction: "Uptown", train_id: '124N', train_station: "66 St - Lincoln Center" }, { train_name: "3", train_direction: "Downtown", train_id: '124S', train_station: "66 St - Lincoln Center" }],
     },
     {
         stop_name: "59 St - Columbus Circle",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }, { train_name: "2", train_direction: "Uptown" }, { train_name: "2", train_direction: "Downtown" }, { train_name: "3", train_direction: "Uptown" }, { train_name: "3", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "125N", train_station: "59 St - Columbus Circle" }, { train_name: "1", train_direction: "Downtown", train_id: "125S", train_station: "59 St - Columbus Circle" }, { train_name: "2", train_direction: "Uptown", train_id: "125N", train_station: "59 St - Columbus Circle" }, { train_name: "2", train_direction: "Downtown", train_id: "125S", train_station: "59 St - Columbus Circle" }, { train_name: "3", train_direction: "Uptown", train_id: "125N", train_station: "59 St - Columbus Circle" }, { train_name: "3", train_direction: "Downtown", train_id: "125S", train_station: "59 St - Columbus Circle" }],
     },
     {
         stop_name: "50 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }, { train_name: "2", train_direction: "Uptown" }, { train_name: "2", train_direction: "Downtown" }, { train_name: "3", train_direction: "Uptown" }, { train_name: "3", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "126N", train_station: "50 St" }, { train_name: "1", train_direction: "Downtown", train_id: "126S", train_station: "50 St" }, { train_name: "2", train_direction: "Uptown", train_id: "126N", train_station: "50 St" }, { train_name: "2", train_direction: "Downtown", train_id: "126S", train_station: "50 St" }, { train_name: "3", train_direction: "Uptown", train_id: "126N", train_station: "50 St" }, { train_name: "3", train_direction: "Downtown", train_id: "126S", train_station: "50 St" }],
     },
     {
         stop_name: "Times Square - 42 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }, { train_name: "2", train_direction: "Uptown" }, { train_name: "2", train_direction: "Downtown" }, { train_name: "3", train_direction: "Uptown" }, { train_name: "3", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "127N", train_station: "Times Square - 42 St" }, { train_name: "1", train_direction: "Downtown", train_id: "127S", train_station: "Times Square - 42 St" }, { train_name: "2", train_direction: "Uptown", train_id: "127N", train_station: "Times Square - 42 St" }, { train_name: "2", train_direction: "Downtown", train_id: "127S", train_station: "Times Square - 42 St" }, { train_name: "3", train_direction: "Uptown", train_id: "127N", train_station: "Times Square - 42 St" }, { train_name: "3", train_direction: "Downtown", train_id: "127S", train_station: "Times Square - 42 St" }],
     },
     {
         stop_name: "34 St - Penn Station",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }, { train_name: "2", train_direction: "Uptown" }, { train_name: "2", train_direction: "Downtown" }, { train_name: "3", train_direction: "Uptown" }, { train_name: "3", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "128N", train_station: "34 St - Penn Station" }, { train_name: "1", train_direction: "Downtown", train_id: "128S", train_station: "34 St - Penn Station" }, { train_name: "2", train_direction: "Uptown", train_id: "128N", train_station: "34 St - Penn Station" }, { train_name: "2", train_direction: "Downtown", train_id: "128S", train_station: "34 St - Penn Station" }, { train_name: "3", train_direction: "Uptown", train_id: "128N", train_station: "34 St - Penn Station" }, { train_name: "3", train_direction: "Downtown", train_id: "128S", train_station: "34 St - Penn Station" }],
     },
     {
         stop_name: "28 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }, { train_name: "2", train_direction: "Uptown" }, { train_name: "2", train_direction: "Downtown" }, { train_name: "3", train_direction: "Uptown" }, { train_name: "3", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "129N", train_station: "28 St" }, { train_name: "1", train_direction: "Downtown", train_id: "129S", train_station: "28 St" }, { train_name: "2", train_direction: "Uptown", train_id: "129N", train_station: "28 St" }, { train_name: "2", train_direction: "Downtown", train_id: "129S", train_station: "28 St" }, { train_name: "3", train_direction: "Uptown", train_id: "129N", train_station: "28 St" }, { train_name: "3", train_direction: "Downtown", train_id: "129S", train_station: "28 St" }],
     },
     {
         stop_name: "23 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }, { train_name: "2", train_direction: "Uptown" }, { train_name: "2", train_direction: "Downtown" }, { train_name: "3", train_direction: "Uptown" }, { train_name: "3", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "130N", train_station: "23 St" }, { train_name: "1", train_direction: "Downtown", train_id: "130S", train_station: "23 St" }, { train_name: "2", train_direction: "Uptown", train_id: "130N", train_station: "23 St" }, { train_name: "2", train_direction: "Downtown", train_id: "130S", train_station: "23 St" }, { train_name: "3", train_direction: "Uptown", train_id: "130N", train_station: "23 St" }, { train_name: "3", train_direction: "Downtown", train_id: "130S", train_station: "23 St" }],
     },
     {
         stop_name: "18 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }, { train_name: "2", train_direction: "Uptown" }, { train_name: "2", train_direction: "Downtown" }, { train_name: "3", train_direction: "Uptown" }, { train_name: "3", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "131N", train_station: "18 St" }, { train_name: "1", train_direction: "Downtown", train_id: "131S", train_station: "18 St" }, { train_name: "2", train_direction: "Uptown", train_id: "131N", train_station: "18 St" }, { train_name: "2", train_direction: "Downtown", train_id: "131S", train_station: "18 St" }, { train_name: "3", train_direction: "Uptown", train_id: "131N", train_station: "18 St" }, { train_name: "3", train_direction: "Downtown", train_id: "131S", train_station: "18 St" }],
     },
     {
         stop_name: "14 St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }, { train_name: "2", train_direction: "Uptown" }, { train_name: "2", train_direction: "Downtown" }, { train_name: "3", train_direction: "Uptown" }, { train_name: "3", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "132N", train_station: "14 St" }, { train_name: "1", train_direction: "Downtown", train_id: "132S", train_station: "14 St" }, { train_name: "2", train_direction: "Uptown", train_id: "132N", train_station: "14 St" }, { train_name: "2", train_direction: "Downtown", train_id: "132S", train_station: "14 St" }, { train_name: "3", train_direction: "Uptown", train_id: "132N", train_station: "14 St" }, { train_name: "3", train_direction: "Downtown", train_id: "132S", train_station: "14 St" }],
     },
     {
         stop_name: "Christopher St - Sheridan Sq",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "133N", train_station: "Christopher St - Sheridan Sq" }, { train_name: "1", train_direction: "Downtown", train_id: "133S", train_station: "Christopher St - Sheridan Sq" }],
     },
     {
         stop_name: "Houston St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "134N", train_station: "Houston St" }, { train_name: "1", train_direction: "Downtown", train_id: "134S", train_station: "Houston St" }],
     },
     {
         stop_name: "Canal St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "135N", train_station: "Canal St" }, { train_name: "1", train_direction: "Downtown", train_id: "135S", train_station: "Canal St" }],
     },
     {
         stop_name: "Franklin St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "136N", train_station: "Franklin St" }, { train_name: "1", train_direction: "Downtown", train_id: "136S", train_station: "Franklin St" }],
     },
     {
         stop_name: "Chambers St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }, { train_name: "2", train_direction: "Uptown" }, { train_name: "2", train_direction: "Downtown" }, { train_name: "3", train_direction: "Uptown" }, { train_name: "3", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "137N", train_station: "Chambers St" }, { train_name: "1", train_direction: "Downtown", train_id: "137S", train_station: "Chambers St" }, { train_name: "2", train_direction: "Uptown", train_id: "137N", train_station: "Chambers St" }, { train_name: "2", train_direction: "Downtown", train_id: "137S", train_station: "Chambers St" }, { train_name: "3", train_direction: "Uptown", train_id: "137N", train_station: "Chambers St" }, { train_name: "3", train_direction: "Downtown", train_id: "137S", train_station: "Chambers St" }],
     },
     {
         stop_name: "WTC Cortlandt",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "138N", train_station: "WTC Cortlandt" }, { train_name: "1", train_direction: "Downtown", train_id: "138S", train_station: "WTC Cortlandt" }],
     },
     {
         stop_name: "Rector St",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }, { train_name: "1", train_direction: "Downtown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "139N", train_station: "Rector St" }, { train_name: "1", train_direction: "Downtown", train_id: "139S", train_station: "Rector St" }],
     },
     {
         stop_name: "South Ferry",
-        stop_trains: [{ train_name: "1", train_direction: "Uptown" }],
+        stop_trains: [{ train_name: "1", train_direction: "Uptown", train_id: "140N", train_station: "South Ferry" }],
     }
 ]
 
@@ -1153,9 +1153,5 @@ export default data
 //         "zone_id": "",
 //     },
 // ]
-
-
-
-
 
 

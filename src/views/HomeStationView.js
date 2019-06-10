@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, Image, Dimensions, StyleSheet, FlatList, Text, Animated, TextInput, TouchableWithoutFeedback, Keyboard, LayoutAnimation } from "react-native"
+import { View, Content, Image, Dimensions, StyleSheet, FlatList, Text, Animated, TextInput, TouchableWithoutFeedback, Keyboard, LayoutAnimation } from "react-native"
 import ListItem from "../components/ListItem"
 import { functions } from "../firebase/firebase"
 import { connect } from 'react-redux';
@@ -34,10 +34,7 @@ class HomeStationView extends Component {
     }
 
     async componentDidMount() {
-        // const { data } = await functions.httpsCallable("fetchAllStations")({})
-        // this.props.addStations(data)
         this.setState({ stations: data, filteredStations: data })
-
     }
     expandElement = () => {
         LayoutAnimation.configureNext({
@@ -98,6 +95,7 @@ class HomeStationView extends Component {
         Keyboard.dismiss()
     }
     renderItem = ({ item }) => {
+        const { expanded } = this.state
         return (
             <View
                 style={{
@@ -108,7 +106,7 @@ class HomeStationView extends Component {
             >
                 <ListItem
                     item={item}
-                    isHidden={!this.state.expanded}
+                    isHidden={!expanded}
                     onPress={this.selectHomeStation}
                 />
             </View>
@@ -116,7 +114,6 @@ class HomeStationView extends Component {
     };
     render() {
         const { filteredStations, homeStationView, expanded } = this.state
-        const { width, height } = Dimensions.get("window")
         return (
             <TouchableWithoutFeedback onPress={this.contractElement} accessible={false}>
                 <View style={styles.container}>
@@ -129,10 +126,12 @@ class HomeStationView extends Component {
                             <Image source={require("../assets/searchIcon.png")} style={styles.searchIcon} />
                         </View>
                         {expanded && <View style={[styles.homeStationList, { height: this.state.filteredStations.length !== this.state.stations.length && this.state.filteredStations.length * 45 < 315 ? this.state.filteredStations.length * 45 - 1 : 314 }]}>
-                            {(<FlatList
+                            <FlatList
+                                keyboardShouldPersistTaps={"handled"}
+                                showsVerticalScrollIndicator={true}
                                 data={filteredStations}
                                 renderItem={this.renderItem}
-                            />)}
+                            />
                         </View>}
                     </View>
                 </View>

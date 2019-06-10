@@ -20,7 +20,7 @@ exports.fetchStationTimes = functions.https.onRequest((request, response) => {
     const { stopId } = request.body.data
     console.log("stop id", stopId)
     mta.schedule(stopId).then(function (result) {
-        console.log(result);
+        console.log("train times:", result);
         response.send({ data: result })
     }).catch(err => response.send(err))
 })
