@@ -15,6 +15,8 @@ exports.fetchAllStations = functions.https.onRequest((request, response) => {
     });
 });
 
+//this should show up when I git commit
+
 
 exports.fetchStationTimes = functions.https.onRequest((request, response) => {
     const { stopId } = request.body.data
